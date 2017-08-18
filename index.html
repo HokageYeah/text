@@ -1,0 +1,36 @@
+<head>
+  <meta name="viewport" content="width=device-width">
+</head>
+
+<body>
+<script>
+
+var c = document.cookie;
+var m = c.match(/name=(\w+)/);
+var name;
+
+if (m) {
+  document.writeln("You are1234 " + m[1] + '.');
+  name = m[1];
+} else {
+  document.writeln("You are 4567.");
+  name = "";
+}
+
+if (location.search.match(/redirect/)) {
+  location.href = "text://name/" + name;
+  alert(location.href);
+}
+
+function saveName() {
+    document.cookie = 'name=' + document.getElementById('name').value + ';max-age=3600';
+    	alert(document.cookie);
+    location.reload();
+}
+
+</script>
+
+<input type="text" id="name">
+<input type="submit" value="Save" onclick="saveName();">
+
+</body>
